@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	var square = 0;
+	var circle = 0;
+	var calculating;
+
+	function cal(){
+		square++;
+		var x = parseInt(Math.random()*500);
+		var y = parseInt(Math.random()*500);
+		if(((x-250)*(x-250)+(y-250)*(y-250)) < 62500) circle++;
+		var pi = 4*circle/square;
+
+		$("#pi_v").text(pi);	
+	} 
+
+	$("#calc").click(function() {
+		if(!calculating){
+			calculating = setInterval(function(){ cal() }, 0);
+		}
+	});
+
+	$("#stop").click(function() {
+		clearInterval(calculating);
+		calculating = null;
+	});	
+});
+</script>
+</head>
+
+<body>
+
+<canvas id="myCanvas" width="500" height="500" style="border:1px solid #d3d3d3;">
+Your browser does not support the canvas element.
+</canvas>
+<span id="pi_v"></span><br>
+<button id="calc">Calculate</button>
+<button id="stop">Stop</button>
+</body>
+</html>
