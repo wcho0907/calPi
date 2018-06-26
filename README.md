@@ -5,4 +5,4 @@ cd calPi
 bower install
 open index.html
 ```
-Calcualte PI~~
+Calculate PI~~
